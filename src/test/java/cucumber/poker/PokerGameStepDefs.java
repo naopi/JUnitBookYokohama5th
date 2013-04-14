@@ -37,10 +37,19 @@ public class PokerGameStepDefs
 
 
 
-	@ならば("^ノーペアデあるべき$")
-	public void ノーペアデあるべき() throws Throwable
+	@ならば("^ノーペアであるべき$")
+	public void ノーペアであるべき() throws Throwable
 	{
 		Pat result = sut.pat();
 		assertThat(result, is(Pat.NO_PAIR));
+	}
+
+	@ならば("^(\\d+)のワンペアであるべき$")
+	public void ワンペアであるべき(int no) throws Throwable
+	{
+		Pat excepted = new Pat.OnePair(no);
+
+		Pat result = sut.pat();
+		assertThat(result, is(excepted));
 	}
 }

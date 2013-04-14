@@ -52,4 +52,23 @@ public class PokerGameStepDefs
 		Pat result = sut.pat();
 		assertThat(result, is(excepted));
 	}
+
+	@ならば("^(\\d+)と(\\d+)のツーペアであるべき$")
+	public void ツーペアであるべき(int no1, int no2) throws Throwable
+	{
+		Pat excepted = new Pat.TwoPair(no1, no2);
+
+		Pat result = sut.pat();
+		assertThat(result, is(excepted));
+	}
+
+	@ならば("^(\\d+)のスリーカードであるべき$")
+	public void スリーカードであるべき(int no) throws Throwable
+	{
+		Pat excepted = new Pat.ThreeCards(no);
+
+		Pat result = sut.pat();
+		assertThat(result, is(excepted));
+	}
+
 }
